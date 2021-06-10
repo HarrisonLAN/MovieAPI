@@ -12,14 +12,10 @@ repository.deleteUser = (id) => {
     return user.findOneAndRemove(id);
 };
 repository.registerUser = () => {
-    return user.find({}).lean();
+    return user.create(payload).lean();
 };
 
 repository.loginUser = ({ username, password }) => {
-    if (user.find({ username: username, password: password })) {
-        return user.find({ username: username, password: password }).lean();
-    } else {
-        return console.error("Incorrect information");
-    }
+    return user.findOne({name: username,password:password})
 };
 module.exports = repository;
