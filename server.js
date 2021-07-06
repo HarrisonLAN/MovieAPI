@@ -15,3 +15,7 @@ database.db.once('open', () => start());
 const start = () => {
     app.listen(config.PORT, () => console.log(`Listening on port ${config.PORT}.`));
 };
+
+app.post('/test', (req, res) => {
+    res.json({ requestBody: req.body })  // <==== req.body will be a parsed JSON object
+})
