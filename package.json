@@ -7,9 +7,14 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.9",
-    "mongoose": "^5.12.12"
+    "mongoose": "^5.12.12",
+    "nodemon": "^2.0.11"
   },
   "devDependencies": {
     "eslint": "^7.27.0"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   }
 }

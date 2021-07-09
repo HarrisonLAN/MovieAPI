@@ -18,8 +18,11 @@ middleware.protected = (req, res, next) => {
   }
 };
 
+
 middleware.generateAccessToken = async (req, res) => {
-  return JWT.sign({ username: req }, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+  const { name, _id, email } = req;
+
+  return JWT.sign({ name, _id, email }, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
 }
 
 module.exports = middleware;
