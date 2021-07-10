@@ -11,11 +11,11 @@ repository.getUser = (id) => {
 repository.deleteUser = (id) => {
     return user.findOneAndRemove(id);
 };
-repository.registerUser = () => {
+repository.registerUser = (payload) => {
     return user.create(payload).lean();
 };
 
-repository.loginUser = ({ username, password }) => {
-    return user.findOne({name: username,password:password})
+repository.loginUser = ({ name, password }) => {
+    return user.findOne({ name: name, password: password })
 };
 module.exports = repository;

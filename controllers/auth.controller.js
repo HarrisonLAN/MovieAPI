@@ -3,8 +3,8 @@ const repository = require('../repositories/user.repository');
 const controller = {};
 
 controller.login = async (req, res) => {
-    const { username, password } = req.body;
-    const login = await repository.loginUser({ username, password });
+    const { name, password } = req.body;
+    const login = await repository.loginUser({ name, password });
     delete login.password;
     const token = await middleware.generateAccessToken(login);
     res.json({ success: true, login, token });
