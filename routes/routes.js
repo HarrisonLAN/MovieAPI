@@ -7,8 +7,10 @@ const express = require('express');
 const router = express.Router();
 
 // unprotected endpoint
-router.use('/auth', require('./auth.router'));
+router.use('/auth', require('./auth.routes'));
 router.use('/movies', require('./movie.routes'));
+
+
 // protected endpoints
 router.use('/user', authMiddleware.protected, require('./users.routes'));
 

@@ -12,7 +12,12 @@ repository.deleteUser = (id) => {
     return user.findOneAndRemove(id);
 };
 repository.registerUser = (payload) => {
-    return user.create(payload).lean();
+    try {
+        return user.create(payload);
+    } catch (error) {
+        //console.log(error)
+        return (error);
+    }
 };
 
 repository.loginUser = ({ name, password }) => {

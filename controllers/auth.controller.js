@@ -13,7 +13,8 @@ controller.login = async (req, res) => {
 controller.register = async (req, res) => {
     const payload = req.body;
     const newAccount = await repository.registerUser(payload);
-    const token = middleware.generateAccessToken(req.body);
+    delete newAccount.password;
+    const token = middleware.generateAccessToken(newAccount);
     res.json({ success: true, newAccount, token });
 };
 
