@@ -13,6 +13,7 @@ const MovieSchema = new Schema({
     languages: [String],
     released: Date,
     directors: [String],
+    rated: String,
     writers: [String],
     awards: {
         wins: Number,
@@ -27,7 +28,24 @@ const MovieSchema = new Schema({
         id: Number
     },
     countries: [String],
-    type: String
+    type: String,
+    tomatoes: {
+        viewr: {
+            rating: Number,
+            numReviews: Number,
+            meter: Number
+        },
+        critic: {
+            rating: Number,
+            numReviews: Number,
+            meter: Number
+
+        },
+        fresh: Number,
+        rotten: Number,
+        lastupdated: Date
+
+    }
 });
 
 module.exports = mongoose.model('movies', MovieSchema);
