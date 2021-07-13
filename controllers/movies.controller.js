@@ -1,10 +1,11 @@
 const repository = require('../repositories/movies.repository');
 const controller = {};
+const handler = require('../middlewares/err.handler')
 
-controller.getAllMovies = async (req, res) => {
+controller.getAllMovies = async (req, res, next) => {
     const movies = await repository.getAllMovies();
-
     res.json({ success: true, movies });
+
 };
 
 controller.getMovieById = async (req, res) => {
@@ -13,5 +14,11 @@ controller.getMovieById = async (req, res) => {
 
     res.json({ success: true, movies });
 };
+
+controller.getDescMovieRatings = async (req, res) => {
+    const movies = await repository.sortOnRating();
+    res.json({ success: true, movies });
+};
+
 
 module.exports = controller;
