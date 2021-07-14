@@ -9,7 +9,8 @@ controller.getCommentsBasedOnMovie = async (req, res) => {
 
 controller.deleteComment = async (req, res) => {
     const { id } = req.params;
-
+    repository.getAllCommentsBasedOnMovie(id);
+    res.json({ success: true });
 }
 controller.postComment = async (req, res) => {
     const payload = req.body;

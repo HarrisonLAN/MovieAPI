@@ -1,5 +1,6 @@
 
 const userController = require('../controllers/comments.controller')
+const asyncHandler = require('../middlewares/err.handler')
 
 const express = require('express');
 
