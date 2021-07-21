@@ -4,18 +4,18 @@ const controller = {};
 
 controller.login = async (req, res) => {
     const { name, password } = req.body;
-    const login = await repository.loginUser({ name, password });
-    delete login.password;
-    const token = await middleware.generateAccessToken(login);
-    res.json({ success: true, login, token });
+    const user = await repository.loginUser({ name, password });
+    delete user._doc.password
+    const jwt = await middleware.generateAccessToken(user);
+    res.json({ success: true, user, jwt });
 };
 
 controller.register = async (req, res) => {
     const payload = req.body;
     const newAccount = await repository.registerUser(payload);
-    delete newAccount.password;
-    const token = middleware.generateAccessToken(newAccount);
-    res.json({ success: true, newAccount, token });
+    delete newAccount._doc.password
+    const jwt = middleware.generateAccessToken(newAccount);
+    res.json({ success: true, newAccount, jwt });
 };
 
 module.exports = controller;

@@ -6,7 +6,7 @@ repository.getAllMovies = () => {
     return Movie.find({}).lean().limit(20);
 };
 repository.sortOnRating = () => {
-    return Movie.find({ 'imdb.rating': { $type: 'string' } } && { 'imdb.rating': { $not: { $type: 'string' } } }, null, { sort: { 'imdb.rating': -1 } }, function (err, docs) { }).limit(20);
+    return Movie.find({ 'imdb.rating': { $type: 'string' } } && { 'imdb.rating': { $not: { $type: 'string' } } }, null, { sort: { 'imdb.rating': -1 } }, function (err, docs) { }).limit(50);
 }
 
 repository.getMovieById = (id) => {
