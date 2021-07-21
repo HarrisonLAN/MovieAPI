@@ -3,7 +3,7 @@ const Movie = require('../models/movies.model');
 const repository = {};
 
 repository.getAllMovies = () => {
-    return Movie.find({}).lean().limit(20);
+    return Movie.find({}).lean();
 };
 repository.sortOnRating = () => {
     return Movie.find({ 'imdb.rating': { $type: 'string' } } && { 'imdb.rating': { $not: { $type: 'string' } } }, null, { sort: { 'imdb.rating': -1 } }, function (err, docs) { }).limit(50);
