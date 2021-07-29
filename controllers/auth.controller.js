@@ -12,10 +12,14 @@ controller.login = async (req, res) => {
 
 controller.register = async (req, res) => {
     const payload = req.body;
+    try{
     const newAccount = await repository.registerUser(payload);
-    delete newAccount._doc.password
-    const jwt = middleware.generateAccessToken(newAccount);
-    res.json({ success: true, newAccount, jwt });
+    res.json({success:true});
+    }catch(error){
+        console.log(error);
+        res.json({success:false})
+    }
+
 };
 
 module.exports = controller;
